@@ -11,4 +11,4 @@ class Solution:
             d[s[j]]=j
         return result
 solution = Solution()
-print(solution.longestSubstring('apple'))
+print(solution.longestSubstring(input("input the string you would like the longest substring of: ")))
