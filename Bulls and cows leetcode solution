@@ -1,0 +1,25 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        bulls = 0
+        cows = 0
+        i = 0 # initializing count variable to 0
+        while i < len(guess): # i cannot use a forloop, as the lengths of the lists are changing
+            if guess[i] == secret[i]: # if our current index is a bull:
+                bulls+=1 # one is added to the count of bulls
+                guess = guess.replace(guess[i], '', 1) # replacing the first instance s
+                secret = secret.replace(secret[i], '', 1)
+            else:
+                i += 1
+                
+        i = 0
+        while i < len(guess):
+            if guess[i] in secret:
+                cows += 1
+                x = guess[i] # guess i changes, so if i had guess i in both of the lines it would
+                #be different, as the length of guess will have changed, the x variable keeps it still.
+                guess = guess.replace(x, '', 1) # replacing the element that matched
+                #with an empty string, essentially deleting it               
+                secret = secret.replace(x, '', 1)
+            else:    
+                i += 1 # move right one in the array
+        return (str(bulls) + "A" + str(cows) + "B")
