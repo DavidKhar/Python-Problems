@@ -1,0 +1,18 @@
+# C O M M E N T S !
+class Solution:
+    def binarySearch(self, arr, target, low, high):
+        mid = (low+high)//2 # setting mid to the middle of low and high
+        if arr[mid] == target: # if mid is currently on the target
+            return mid # returns mid
+        if low >= high: # if the low has surpassed the high, everything has been checked and
+            # target cannot be in the array
+            return "TARGET DOES NOT EXIST IN ARR."
+        elif arr[mid] > target: # if you are too far to the right, you move the high to mid so
+            # that you check the left side
+            return(self.binarySearch(arr, target, low, mid)) 
+        elif arr[mid] < target: # if you are too far to the left, swap low and mid so that you are
+            # now checking the right side of the array (mid+1, not mid, because if it was just mid
+            # you could get stuck in loops)
+            return(self.binarySearch(arr, target, mid+1, high))
+solution = Solution()
+print(solution.binarySearch([1,2,3,5,8], 8, 0, 4))
