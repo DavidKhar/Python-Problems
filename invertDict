@@ -1,0 +1,73 @@
+# FEEDBACK: DO NOT RUSH THROUGH THINGS. TAKE YOUR TIME TO TAKE A DEEP BREATH, UNDERSTAND MY OWN SOLUTION, MAKE A FRAMEWORK IN MY HEAD,
+# 
+
+# EXAMPLE: 1 + 1
+# IN MY HEAD, I SHOULD KNOW, HOW DID I GET THE 2? 3 - 1? 1 + 1?
+
+# IN MY CASE, I FORGET WHICH WAY I GOT TO THE ANSWER. SOLVE THIS BY TAKING A DEEP BREATH, GO THROUGH THE LINE OF CODE, ASK FOR A MINUTE 
+# TO SCAN YOUR CODE, GATHER YOUR THOUGHTS, AND CREATE A MENTAL FRAMEWORK OF THE IMPORTANT THINGS IN YOUR CODE BEFORE EXPLAINING.
+
+# WRITE COMMENTS IN A WAY THAT IT HIGHLIGHTS KEY PIECESE OF LOGIC, DONT OVERWRITE THEM. THIS LETS YOU READ THEM AND KNOW HOW TO EXPLAIN THINGS MORE EFFECIENTLY.
+# Write a Python program to invert a dictionary with unique hashable values
+
+# SAMPLE INPUT:
+# {
+#    "Paris": "France",
+#    "New york": "USA",
+#    "Chicago": "USA",
+#    "Barcelona": "Spain",
+#    "Madrid": "Spain"
+# }
+
+
+{
+ "F": ["P"],
+ "U": ["N", "C"],
+ "S": ["B", "M"]
+}
+# OUTPUT:
+#{
+# "France": "Paris",
+# "USA": ["New york", "Chicago"],
+# "Spain": ["Barcelona", "Madrid"]
+# }
+
+
+# SAMPLE INPUT:
+# {
+#    "Paris": "France",
+#    "New york": "USA",
+#    "Chicago": "USA",
+#    "Barcelona": "Spain",
+#    "Madrid": "Spain"
+# }
+
+class Solution:
+    def invertDict(self, dict):
+        # initializing the output dict to an empty dict
+        output = {
+
+        }
+        # checks IF each key in dict is in output, if it is,
+        # then it adds the current key as a value to its
+        # old value. if it is not, then makes a new key
+        # under the current keys value into output
+        # and adds the key as a value.
+        for i in dict:  
+            if dict[i] in output:
+                output[dict[i]].append(i)          
+            else:
+                temp = []
+                temp.append(i)
+                output[dict[i]] = temp
+        return output
+solution = Solution()
+print(solution.invertDict({
+    "Paris": "France",
+    "New york": "USA",
+    "Chicago": "USA",
+    "Barcelona": "Spain",
+    "Madrid": "Spain",
+    "Seville": "Spain",
+    "Rome": "Italy"
+ }))
